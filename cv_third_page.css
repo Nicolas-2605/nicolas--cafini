@@ -68,7 +68,6 @@ body {
   top: 0;
   z-index: 1000;
 }
-
 .containerNav-footer {
   display: flex;
   justify-content: space-between;
@@ -76,16 +75,23 @@ body {
   padding: 15px 60px;
   background: #0A2B36;
 }
-
 .menuPage {
   display: flex;
   align-items: center; 
   gap: 20px; 
 }
 
-.logoNav img {
-  width: 78px;
-  height: 49px;
+.hamburgerMenu.open .hamburger:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+  transform-origin: center;
+}
+
+.hamburgerMenu.open .hamburger:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerMenu.open .hamburger:nth-child(3) {
+  transform: rotate(-45deg) translate(7.5px, -7.5px);
 }
 
 .menuItems {
@@ -106,7 +112,11 @@ body {
 .menuChoice .choice:hover {
   color: #2ab8e3;
 }
-
+.menuSocial {
+  display: none;
+  gap: 18px;
+  align-items: center; 
+}
 .menuSocial_desktop {
   display: flex;
   gap: 18px;
@@ -118,16 +128,13 @@ body {
   height: 32px;
 }
 
-/* Sezione Contattami */
-.FirstDescription_Digital{
-  color: #0A2B36;
-  font-family: BebasNeue-Regular;
-  font-size: 56px;
-  letter-spacing: 2.24px;
-  margin: -50px 0;
+.FirstTest2_form {
+  max-width: 1000px;
+  text-align: center;
+  margin: auto;
 }
 
-.TEXT_retention {
+.TEXT_retention{
   margin-top: 50px;
   color: var(--Primary-Color, #0A2B36);
   font-family: Montserrat;
@@ -157,7 +164,6 @@ body {
   background: #330110;
 }
 
-/* Form di Contatto */
 .form-container {
   max-width: 864px;
   width: 100%;
@@ -190,8 +196,8 @@ label {
   margin-bottom: 5px;
   display: block;
   text-align: left;
-  font-family: Montserrat;
 }
+
 
 input, textarea {
   width: 100%;
