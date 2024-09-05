@@ -1,9 +1,7 @@
-
-
-//HambugerMenu
-const hamburgerMenu = document.querySelector ('.hamburgerMenu');
-const menuItems = document.querySelector ('.menuItems');
-const menuChoices = document.querySelectorAll ('.menuChoice');
+//HamburgerMenu
+const hamburgerMenu = document.querySelector('.hamburgerMenu');
+const menuItems = document.querySelector('.menuItems');
+const menuChoices = document.querySelectorAll('.menuChoice');
 
 hamburgerMenu.addEventListener('click', () => {
   menuItems.classList.toggle('show');
@@ -17,33 +15,41 @@ menuChoices.forEach(choice => {
   });
 });
 
-
-
 // Inizializzazione di EmailJS
 (function(){
-    emailjs.init("YOUR_USER_ID"); // Sostituisci "YOUR_USER_ID" con il tuo user_id di EmailJS
+    emailjs.init("PHmEwKVcEJUloj21D"); // Sostituisci "YOUR_USER_ID" con il tuo user_id di EmailJS
 })();
 
 // Altri script relativi alla tua applicazione
 document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Previene il comportamento predefinito del form
+    console.log("Form submit intercettato"); // Messaggio di debug
+
+    // Mostra l'icona di caricamento
+    document.getElementById('submit-btn').disabled = true; // Disabilita il pulsante di invio
+    document.getElementById('loading-icon').style.display = 'inline-block'; // Mostra l'icona
 
     // Parametri per l'email
     const params = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
+        from_name: document.getElementById('name').value,
+        reply_to: document.getElementById('email').value,
         message: document.getElementById('message').value,
     };
 
     // Invio dell'email tramite EmailJS
-    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", params)
-        .then(function(response) {
-            alert("Messaggio inviato con successo!", response.status, response.text);
-        }, function(error) {
-            alert("Errore nell'invio del messaggio:", error);
-        });
+    emailjs.send("service_edozv64", "template_73l0sa4", params)
+    .then(function(response) {
+        console.log("SUCCESS!", response.status, response.text);
+        alert("Messaggio inviato con successo!");
+    }, function(error) {
+        console.error("FAILED...", error);
+        alert("Errore nell'invio del messaggio:", error);
+    }).finally(function() {
+        // Nascondi l'icona di caricamento e riabilita il pulsante
+        document.getElementById('submit-btn').disabled = false;
+        document.getElementById('loading-icon').style.display = 'none';
+    });
 });
-
 
 //Recensioni click dot
 let slideIndex = 1;
